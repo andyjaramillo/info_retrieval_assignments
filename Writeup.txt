@@ -1,0 +1,380 @@
+
+Part 1:
+From the results of my computation, the results of different similarity functions on the same computation function do not differ by a lot. On average, the 
+precision from tf_idf is higher than tf for various levels of recall and mean averages. Boolean and tf are much closer in their precision values as well. 
+
+    Stemming:
+        Boolean:
+            -on any of the similarity functions, on average it did better with Stemming
+        Tf:
+            -on any of the similarity functions, on average stemming did not make a difference
+        Tf idf:
+            -though top scores were the same, stemming in tf idf introduced more variability in the average scores
+
+    Combination:
+        tf:
+            -the highest scores came from having no stemming and removing stopwords
+        tf idf and boolean:
+            -no significant difference
+
+    Similarity functions:
+        Boolean:
+            -Compared to tf and tf_idf, boolean was affected the least by various permutations of similarity functions
+        TF:
+            -cosine had the most variability in precision scores
+        TD IDF:
+            -Jaccard had the most variability in precision scores
+        -on average, tf_idf had more variability in precision when changing similarity.
+
+From these observations, particular permutations stick out as performing well or poorly and simple comparisons between each of the attributes for the permutation do not show clear results. 
+    Best:
+        For low levels of recall: the best performer was:
+           tfidf	False	True	jaccard	1,1,1,1	0.2506	0.3999	0.6014	0.0667	0.4173	0.3871	0.9728	0.6135
+        -Stopwords make a difference in lower recall scores since there is less total content being retrieved, so removing irrelevant information proves to help
+
+    Worst:
+        For low levels of recall, the worst performer was
+            tf	False	False	overlap	1,1,1,4	0.1466	0.3218	0.5702	0.0060	0.3462	0.3589	0.9577	0.6908
+        -This did not account for stopwords, which improved the score. The higher recall levels became closer, but for smaller levels of recall, it had the worst score
+    -they both use the same term weight and both have stemming off, showing that between term weighting functions stemming did not
+    make the difference
+
+Part 2:
+    1. The title and scores of the retrieved docuents for given queries 6,9, and 22
+        Permutation : tf	True	False	dice	1,1,1,4	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000
+    Query: doc_id: 6
+    Relevant docs:  [1543, 2078, 2828]
+
+    doc_id: 1665 and title: ['automat', 'generat', 'of', 'effici', 'lexic', 'processor', 'use', 'finit', 'state', 'techniqu'] and score of similarity: 6.730769230769231
+
+    doc_id: 2233 and title: ['signatur', 'simul', 'and', 'certain', 'cryptograph', 'code'] and score of similarity: 6.615384615384615
+
+    doc_id: 2931 and title: ['logic', 'and', 'program', 'languag'] and score of similarity: 6.230769230769231
+
+    doc_id: 2002 and title: ['amesplot-a', 'higher', 'level', 'data', 'plot', 'softwar', 'system'] and score of similarity: 5.423076923076923
+
+    doc_id: 1727 and title: ['one', 'way', 'of', 'estim', 'frequenc', 'of', 'jump', 'in', 'a', 'program'] and score of similarity: 5.3076923076923075
+
+    doc_id: 1856 and title: ['the', 'teachabl', 'languag', 'comprehend', ':', 'a', 'simul', 'program', 'and', 'theori', 'of', 'languag'] and score of similarity: 5.230769230769231
+
+    doc_id: 3077 and title: ['can', 'program', 'be', 'liber', 'from', 'the', 'von', 'neumann', 'style', '?', 'a', 'function', 'style', 'and', 'it', 'algebra', 'of', 'program'] and score of similarity: 5.076923076923077
+
+    doc_id: 2470 and title: ['fen-an', 'axiomat', 'basi', 'for', 'program', 'semant'] and score of similarity: 4.846153846153846
+
+    doc_id: 2916 and title: ['a', 'fast', 'string', 'search', 'algorithm'] and score of similarity: 4.846153846153846
+
+    doc_id: 2289 and title: ['cellular', 'array', 'for', 'the', 'solut', 'of', 'graph', 'problem'] and score of similarity: 4.576923076923077
+
+    doc_id: 2344 and title: ['on', 'the', 'optim', 'of', 'perform', 'of', 'time-shar', 'system', 'by', 'simul'] and score of similarity: 4.576923076923077
+
+    doc_id: 2911 and title: ['anomal', 'behavior', 'of', 'the', 'fifty-perc', 'rule', 'in', 'dynam', 'memori', 'alloc'] and score of similarity: 4.461538461538462
+
+    doc_id: 2721 and title: ['the', 'digit', 'simul', 'of', 'river', 'plankton', 'popul', 'dynam'] and score of similarity: 4.346153846153846
+
+    doc_id: 1470 and title: ['the', 'structur', 'of', 'program', 'languag'] and score of similarity: 4.3076923076923075
+
+    doc_id: 1741 and title: ['brad', ':', 'the', 'brookhaven', 'raster', 'display'] and score of similarity: 4.3076923076923075
+
+    doc_id: 1844 and title: ['a', 'modular', 'comput', 'share', 'system'] and score of similarity: 4.269230769230769
+
+    doc_id: 2922 and title: ['two-level', 'control', 'structur', 'for', 'nondeterminist', 'program'] and score of similarity: 4.230769230769231
+
+    doc_id: 670 and title: ['some', 'legal', 'implic', 'of', 'the', 'use', 'of', 'comput', 'in', 'the', 'bank', 'busi'] and score of similarity: 4.1923076923076925
+
+    doc_id: 2046 and title: ['a', 'relat', 'model', 'of', 'data', 'for', 'larg', 'share', 'data', 'bank'] and score of similarity: 4.153846153846154
+
+    doc_id: 3160 and title: ['rejuven', 'experiment', 'comput', 'scienc'] and score of similarity: 4.153846153846154
+
+    doc_id: 2692 and title: ['reentrant', 'polygon', 'clip'] and score of similarity: 4.115384615384615
+
+    doc_id: 1366 and title: ['comput', 'simulation-discuss', 'of', 'the', 'techniqu', 'and', 'comparison', 'of', 'languag'] and score of similarity: 4.076923076923077
+
+    doc_id: 1705 and title: ['a', 'set', 'of', 'basic', 'input-output', 'procedur', '(', 'algorithm', '335', '[', '15', ']', ')'] and score of similarity: 4.076923076923077
+
+    doc_id: 1003 and title: ['a', 'comput', 'analysi', 'method', 'for', 'thermal', 'diffus', 'in', 'biochem', 'system'] and score of similarity: 4.038461538461538
+
+    doc_id: 1847 and title: ['an', 'algorithm', 'for', 'find', 'a', 'fundament', 'set', 'of', 'cycl', 'of', 'a', 'graph'] and score of similarity: 4.038461538461538
+
+    doc_id: 2181 and title: ['the', 'state', 'of', 'comput', 'orient', 'curricula', 'in', 'busi', 'school', '1970'] and score of similarity: 4.038461538461538
+
+    doc_id: 1936 and title: ['variabl', 'length', 'tree', 'structur', 'have', 'minimum', 'averag', 'search', 'time'] and score of similarity: 4.0
+
+    doc_id: 2753 and title: ['a', 'heurist', 'problem', 'solv', 'design', 'system', 'for', 'equip', 'or', 'furnitur', 'layout'] and score of similarity: 4.0
+
+    doc_id: 1135 and title: ['a', 'general', 'business-ori', 'languag', 'base', 'on', 'decis', 'express', '*'] and score of similarity: 3.9615384615384617
+
+    Query: doc_id: 9
+    Relevant docs:  [2372, 2632, 2870, 2876, 3068, 3111, 3128, 3158, 3177]
+
+    doc_id: 1747 and title: ['three', 'criteria', 'for', 'design', 'comput', 'system', 'to', 'facilit', 'debug'] and score of similarity: 8.0
+
+    doc_id: 2002 and title: ['amesplot-a', 'higher', 'level', 'data', 'plot', 'softwar', 'system'] and score of similarity: 8.0
+
+    doc_id: 1844 and title: ['a', 'modular', 'comput', 'share', 'system'] and score of similarity: 7.5
+
+    doc_id: 1665 and title: ['automat', 'generat', 'of', 'effici', 'lexic', 'processor', 'use', 'finit', 'state', 'techniqu'] and score of similarity: 7.214285714285714
+
+    doc_id: 1680 and title: ['a', 'general-purpos', 'display', 'process', 'and', 'tutori', 'system'] and score of similarity: 6.714285714285714
+
+    doc_id: 1711 and title: ['when', 'your', 'comput', 'need', 'a', 'lawyer'] and score of similarity: 6.642857142857143
+
+    doc_id: 2314 and title: ['requir', 'for', 'advanc', 'program', 'system', 'for', 'list', 'process'] and score of similarity: 6.642857142857143
+
+    doc_id: 2740 and title: ['a', 'larg', 'semaphor', 'base', 'oper', 'system'] and score of similarity: 6.5
+
+    doc_id: 3077 and title: ['can', 'program', 'be', 'liber', 'from', 'the', 'von', 'neumann', 'style', '?', 'a', 'function', 'style', 'and', 'it', 'algebra', 'of', 'program'] and score of similarity: 6.5
+
+    doc_id: 1695 and title: ['plexus-an', 'on-lin', 'system', 'for', 'model', 'neural', 'network'] and score of similarity: 6.428571428571429
+
+    doc_id: 1705 and title: ['a', 'set', 'of', 'basic', 'input-output', 'procedur', '(', 'algorithm', '335', '[', '15', ']', ')'] and score of similarity: 6.214285714285714
+
+    doc_id: 2470 and title: ['fen-an', 'axiomat', 'basi', 'for', 'program', 'semant'] and score of similarity: 6.214285714285714
+
+    doc_id: 3112 and title: ['list', 'process', 'in', 'real', 'time', 'on', 'a', 'serial', 'comput'] and score of similarity: 6.142857142857143
+
+    doc_id: 2233 and title: ['signatur', 'simul', 'and', 'certain', 'cryptograph', 'code'] and score of similarity: 6.071428571428571
+
+    doc_id: 2046 and title: ['a', 'relat', 'model', 'of', 'data', 'for', 'larg', 'share', 'data', 'bank'] and score of similarity: 5.714285714285714
+
+    doc_id: 2931 and title: ['logic', 'and', 'program', 'languag'] and score of similarity: 5.642857142857143
+
+    doc_id: 1591 and title: ['a', 'model', 'for', 'a', 'multifunct', 'teach', 'system'] and score of similarity: 5.571428571428571
+
+    doc_id: 2753 and title: ['a', 'heurist', 'problem', 'solv', 'design', 'system', 'for', 'equip', 'or', 'furnitur', 'layout'] and score of similarity: 5.571428571428571
+
+    doc_id: 2035 and title: ['convers', 'access', 'to', 'a', '2048-word', 'machin'] and score of similarity: 5.5
+
+    doc_id: 2887 and title: ['a', 'studi', 'of', 'error', ',', 'error-pron', ',', 'and', 'error', 'diagnosi', 'in', 'cobol'] and score of similarity: 5.5
+
+    doc_id: 1853 and title: ['compact', 'list', 'represent', ':', 'definit', ',', 'garbag', 'collect', ',', 'and', 'system', 'implement'] and score of similarity: 5.428571428571429
+
+    doc_id: 3021 and title: ['a', 'method', 'for', 'obtain', 'digit', 'signatur', 'and', 'public-key', 'cryptosystem'] and score of similarity: 5.357142857142857
+
+    doc_id: 2358 and title: ['the', 'multic', 'virtual', 'memori', ':', 'concept', 'and', 'design'] and score of similarity: 5.285714285714286
+
+    doc_id: 2357 and title: ['mux', ',', 'a', 'simpl', 'approach', 'to', 'on-lin', 'comput'] and score of similarity: 5.214285714285714
+
+    doc_id: 2991 and title: ['improv', 'the', 'access', 'time', 'for', 'random', 'access', 'file'] and score of similarity: 5.214285714285714
+
+    doc_id: 3087 and title: ['an', 'english', 'languag', 'question', 'answer', 'system', 'for', 'a', 'larg', 'relat', 'databas'] and score of similarity: 5.214285714285714
+
+    doc_id: 1769 and title: ['the', 'expand', 'world', 'of', 'comput'] and score of similarity: 5.142857142857143
+
+    doc_id: 1928 and title: ['exclus', 'simul', 'of', 'activ', 'in', 'digit', 'network'] and score of similarity: 5.142857142857143
+
+    doc_id: 2319 and title: ['oper', 'system', 'perform'] and score of similarity: 5.142857142857143
+
+    Query: doc_id: 22
+    Relevant docs:  [2369, 2384, 2441, 2473, 2564, 2637, 2638, 2678, 2692, 2751, 2760, 2761, 2827, 2828, 2829, 3116, 3149]
+
+    doc_id: 2002 and title: ['amesplot-a', 'higher', 'level', 'data', 'plot', 'softwar', 'system'] and score of similarity: 6.321428571428571
+
+    doc_id: 1665 and title: ['automat', 'generat', 'of', 'effici', 'lexic', 'processor', 'use', 'finit', 'state', 'techniqu'] and score of similarity: 6.178571428571429
+
+    doc_id: 1747 and title: ['three', 'criteria', 'for', 'design', 'comput', 'system', 'to', 'facilit', 'debug'] and score of similarity: 5.642857142857143
+
+    doc_id: 2931 and title: ['logic', 'and', 'program', 'languag'] and score of similarity: 5.607142857142857
+
+    doc_id: 1705 and title: ['a', 'set', 'of', 'basic', 'input-output', 'procedur', '(', 'algorithm', '335', '[', '15', ']', ')'] and score of similarity: 5.571428571428571
+
+    doc_id: 1844 and title: ['a', 'modular', 'comput', 'share', 'system'] and score of similarity: 5.571428571428571
+
+    doc_id: 3077 and title: ['can', 'program', 'be', 'liber', 'from', 'the', 'von', 'neumann', 'style', '?', 'a', 'function', 'style', 'and', 'it', 'algebra', 'of', 'program'] and score of similarity: 5.571428571428571
+
+    doc_id: 2233 and title: ['signatur', 'simul', 'and', 'certain', 'cryptograph', 'code'] and score of similarity: 5.464285714285714
+
+    doc_id: 1711 and title: ['when', 'your', 'comput', 'need', 'a', 'lawyer'] and score of similarity: 5.392857142857143
+
+    doc_id: 2289 and title: ['cellular', 'array', 'for', 'the', 'solut', 'of', 'graph', 'problem'] and score of similarity: 5.25
+
+    doc_id: 2753 and title: ['a', 'heurist', 'problem', 'solv', 'design', 'system', 'for', 'equip', 'or', 'furnitur', 'layout'] and score of similarity: 5.071428571428571
+
+    doc_id: 2314 and title: ['requir', 'for', 'advanc', 'program', 'system', 'for', 'list', 'process'] and score of similarity: 5.0
+
+    doc_id: 1727 and title: ['one', 'way', 'of', 'estim', 'frequenc', 'of', 'jump', 'in', 'a', 'program'] and score of similarity: 4.964285714285714
+
+    doc_id: 3112 and title: ['list', 'process', 'in', 'real', 'time', 'on', 'a', 'serial', 'comput'] and score of similarity: 4.964285714285714
+
+    doc_id: 2470 and title: ['fen-an', 'axiomat', 'basi', 'for', 'program', 'semant'] and score of similarity: 4.821428571428571
+
+    doc_id: 2887 and title: ['a', 'studi', 'of', 'error', ',', 'error-pron', ',', 'and', 'error', 'diagnosi', 'in', 'cobol'] and score of similarity: 4.821428571428571
+
+    doc_id: 2046 and title: ['a', 'relat', 'model', 'of', 'data', 'for', 'larg', 'share', 'data', 'bank'] and score of similarity: 4.785714285714286
+
+    doc_id: 1680 and title: ['a', 'general-purpos', 'display', 'process', 'and', 'tutori', 'system'] and score of similarity: 4.75
+
+    doc_id: 2341 and title: ['blocks-a', 'new', 'data', 'type', 'for', 'snobol4'] and score of similarity: 4.75
+
+    doc_id: 2483 and title: ['coko', 'iii', ':', 'the', 'cooper-koz', 'chess', 'program'] and score of similarity: 4.678571428571429
+
+    doc_id: 3021 and title: ['a', 'method', 'for', 'obtain', 'digit', 'signatur', 'and', 'public-key', 'cryptosystem'] and score of similarity: 4.678571428571429
+
+    doc_id: 2438 and title: ['a', 'model', 'and', 'stack', 'implement', 'of', 'multipl', 'environ'] and score of similarity: 4.642857142857143
+
+    doc_id: 1769 and title: ['the', 'expand', 'world', 'of', 'comput'] and score of similarity: 4.607142857142857
+
+    doc_id: 1856 and title: ['the', 'teachabl', 'languag', 'comprehend', ':', 'a', 'simul', 'program', 'and', 'theori', 'of', 'languag'] and score of similarity: 4.535714285714286
+
+    doc_id: 2035 and title: ['convers', 'access', 'to', 'a', '2048-word', 'machin'] and score of similarity: 4.428571428571429
+
+    doc_id: 1847 and title: ['an', 'algorithm', 'for', 'find', 'a', 'fundament', 'set', 'of', 'cycl', 'of', 'a', 'graph'] and score of similarity: 4.392857142857143
+
+    doc_id: 2217 and title: ['experi', 'in', 'automat', 'learn', 'for', 'a', 'multipurpos', 'heurist', 'program'] and score of similarity: 4.357142857142857
+
+    doc_id: 3049 and title: ['a', 'simpli', 'extend', 'and', 'modifi', 'batch', 'environ', 'graphic', 'system', '(', 'sembeg', ')'] and score of similarity: 4.357142857142857
+
+    doc_id: 1366 and title: ['comput', 'simulation-discuss', 'of', 'the', 'techniqu', 'and', 'comparison', 'of', 'languag'] and score of similarity: 4.285714285714286
+
+    2. Term weights for the top relevant documetents to query 6,9, and 22 
+
+Query: doc_id: 6
+  author: []
+  title: []
+  keyword: []
+  abstract: ['interest', 'in', 'articl', 'on', 'robot', ',', 'motion', 'plan', 'particular', 'the', 'geometr', 'and', 'combinatori', 'aspect', '.', 'we', 'are', 'not', 'interest', 'in', 'the', 'dynam', 'of', 'arm', 'motion', '.']
+Relevant docs:  [1543, 2078, 2828]
+
+{'interest': 2.0, 'in': 2.0, 'articl': 1.0, 'on': 1.0, 'robot': 1.0, ',': 1.0, 'motion': 2.0, 'plan': 1.0, 'particular': 1.0, 'the': 2.0, 'geometr': 1.0, 'and': 1.0, 'combinatori': 1.0, 'aspect': 1.0, '.': 2.0, 'we': 1.0, 'are': 1.0, 'not': 1.0, 'dynam': 1.0, 'of': 1.0, 'arm': 1.0}
+
+{'interest': 2.0, 'in': 2.0, 'articl': 1.0, 'on': 1.0, 'robot': 1.0, ',': 1.0, 'motion': 2.0, 'plan': 1.0, 'particular': 1.0, 'the': 2.0, 'geometr': 1.0, 'and': 1.0, 'combinatori': 1.0, 'aspect': 1.0, '.': 2.0, 'we': 1.0, 'are': 1.0, 'not': 1.0, 'dynam': 1.0, 'of': 1.0, 'arm': 1.0}
+
+{'interest': 2.0, 'in': 2.0, 'articl': 1.0, 'on': 1.0, 'robot': 1.0, ',': 1.0, 'motion': 2.0, 'plan': 1.0, 'particular': 1.0, 'the': 2.0, 'geometr': 1.0, 'and': 1.0, 'combinatori': 1.0, 'aspect': 1.0, '.': 2.0, 'we': 1.0, 'are': 1.0, 'not': 1.0, 'dynam': 1.0, 'of': 1.0, 'arm': 1.0}
+
+{'interest': 2.0, 'in': 2.0, 'articl': 1.0, 'on': 1.0, 'robot': 1.0, ',': 1.0, 'motion': 2.0, 'plan': 1.0, 'particular': 1.0, 'the': 2.0, 'geometr': 1.0, 'and': 1.0, 'combinatori': 1.0, 'aspect': 1.0, '.': 2.0, 'we': 1.0, 'are': 1.0, 'not': 1.0, 'dynam': 1.0, 'of': 1.0, 'arm': 1.0}
+
+{'interest': 2.0, 'in': 2.0, 'articl': 1.0, 'on': 1.0, 'robot': 1.0, ',': 1.0, 'motion': 2.0, 'plan': 1.0, 'particular': 1.0, 'the': 2.0, 'geometr': 1.0, 'and': 1.0, 'combinatori': 1.0, 'aspect': 1.0, '.': 2.0, 'we': 1.0, 'are': 1.0, 'not': 1.0, 'dynam': 1.0, 'of': 1.0, 'arm': 1.0}
+
+{'interest': 2.0, 'in': 2.0, 'articl': 1.0, 'on': 1.0, 'robot': 1.0, ',': 1.0, 'motion': 2.0, 'plan': 1.0, 'particular': 1.0, 'the': 2.0, 'geometr': 1.0, 'and': 1.0, 'combinatori': 1.0, 'aspect': 1.0, '.': 2.0, 'we': 1.0, 'are': 1.0, 'not': 1.0, 'dynam': 1.0, 'of': 1.0, 'arm': 1.0}
+
+{'interest': 2.0, 'in': 2.0, 'articl': 1.0, 'on': 1.0, 'robot': 1.0, ',': 1.0, 'motion': 2.0, 'plan': 1.0, 'particular': 1.0, 'the': 2.0, 'geometr': 1.0, 'and': 1.0, 'combinatori': 1.0, 'aspect': 1.0, '.': 2.0, 'we': 1.0, 'are': 1.0, 'not': 1.0, 'dynam': 1.0, 'of': 1.0, 'arm': 1.0}
+
+{'interest': 2.0, 'in': 2.0, 'articl': 1.0, 'on': 1.0, 'robot': 1.0, ',': 1.0, 'motion': 2.0, 'plan': 1.0, 'particular': 1.0, 'the': 2.0, 'geometr': 1.0, 'and': 1.0, 'combinatori': 1.0, 'aspect': 1.0, '.': 2.0, 'we': 1.0, 'are': 1.0, 'not': 1.0, 'dynam': 1.0, 'of': 1.0, 'arm': 1.0}
+
+{'interest': 2.0, 'in': 2.0, 'articl': 1.0, 'on': 1.0, 'robot': 1.0, ',': 1.0, 'motion': 2.0, 'plan': 1.0, 'particular': 1.0, 'the': 2.0, 'geometr': 1.0, 'and': 1.0, 'combinatori': 1.0, 'aspect': 1.0, '.': 2.0, 'we': 1.0, 'are': 1.0, 'not': 1.0, 'dynam': 1.0, 'of': 1.0, 'arm': 1.0}
+
+{'interest': 2.0, 'in': 2.0, 'articl': 1.0, 'on': 1.0, 'robot': 1.0, ',': 1.0, 'motion': 2.0, 'plan': 1.0, 'particular': 1.0, 'the': 2.0, 'geometr': 1.0, 'and': 1.0, 'combinatori': 1.0, 'aspect': 1.0, '.': 2.0, 'we': 1.0, 'are': 1.0, 'not': 1.0, 'dynam': 1.0, 'of': 1.0, 'arm': 1.0}
+
+Query: doc_id: 9
+  author: []
+  title: []
+  keyword: []
+  abstract: ['secur', 'consider', 'in', 'local', 'network', ',', 'network', 'oper', 'system', ',', 'and', 'distribut', 'system', '.']
+Relevant docs:  [2372, 2632, 2870, 2876, 3068, 3111, 3128, 3158, 3177]
+
+{'secur': 1.0, 'consider': 1.0, 'in': 1.0, 'local': 1.0, 'network': 2.0, ',': 2.0, 'oper': 1.0, 'system': 2.0, 'and': 1.0, 'distribut': 1.0, '.': 1.0}
+
+{'secur': 1.0, 'consider': 1.0, 'in': 1.0, 'local': 1.0, 'network': 2.0, ',': 2.0, 'oper': 1.0, 'system': 2.0, 'and': 1.0, 'distribut': 1.0, '.': 1.0}
+
+{'secur': 1.0, 'consider': 1.0, 'in': 1.0, 'local': 1.0, 'network': 2.0, ',': 2.0, 'oper': 1.0, 'system': 2.0, 'and': 1.0, 'distribut': 1.0, '.': 1.0}
+
+{'secur': 1.0, 'consider': 1.0, 'in': 1.0, 'local': 1.0, 'network': 2.0, ',': 2.0, 'oper': 1.0, 'system': 2.0, 'and': 1.0, 'distribut': 1.0, '.': 1.0}
+
+{'secur': 1.0, 'consider': 1.0, 'in': 1.0, 'local': 1.0, 'network': 2.0, ',': 2.0, 'oper': 1.0, 'system': 2.0, 'and': 1.0, 'distribut': 1.0, '.': 1.0}
+
+{'secur': 1.0, 'consider': 1.0, 'in': 1.0, 'local': 1.0, 'network': 2.0, ',': 2.0, 'oper': 1.0, 'system': 2.0, 'and': 1.0, 'distribut': 1.0, '.': 1.0}
+
+{'secur': 1.0, 'consider': 1.0, 'in': 1.0, 'local': 1.0, 'network': 2.0, ',': 2.0, 'oper': 1.0, 'system': 2.0, 'and': 1.0, 'distribut': 1.0, '.': 1.0}
+
+{'secur': 1.0, 'consider': 1.0, 'in': 1.0, 'local': 1.0, 'network': 2.0, ',': 2.0, 'oper': 1.0, 'system': 2.0, 'and': 1.0, 'distribut': 1.0, '.': 1.0}
+
+{'secur': 1.0, 'consider': 1.0, 'in': 1.0, 'local': 1.0, 'network': 2.0, ',': 2.0, 'oper': 1.0, 'system': 2.0, 'and': 1.0, 'distribut': 1.0, '.': 1.0}
+
+{'secur': 1.0, 'consider': 1.0, 'in': 1.0, 'local': 1.0, 'network': 2.0, ',': 2.0, 'oper': 1.0, 'system': 2.0, 'and': 1.0, 'distribut': 1.0, '.': 1.0}
+
+Query: doc_id: 22
+  author: []
+  title: []
+  keyword: []
+  abstract: ['i', 'am', 'interest', 'in', 'hidden-lin', 'and', 'hidden-surfac', 'algorithm', 'for', 'cylind', ',', 'toroid', ',', 'sphere', ',', 'and', 'cone', '.', 'this', 'is', 'a', 'rather', 'special', 'topic', 'in', 'comput', 'graphic', '.']
+Relevant docs:  [2369, 2384, 2441, 2473, 2564, 2637, 2638, 2678, 2692, 2751, 2760, 2761, 2827, 2828, 2829, 3116, 3149]
+
+{'i': 1.0, 'am': 1.0, 'interest': 1.0, 'in': 2.0, 'hidden-lin': 1.0, 'and': 2.0, 'hidden-surfac': 1.0, 'algorithm': 1.0, 'for': 1.0, 'cylind': 1.0, ',': 3.0, 'toroid': 1.0, 'sphere': 1.0, 'cone': 1.0, '.': 2.0, 'this': 1.0, 'is': 1.0, 'a': 1.0, 'rather': 1.0, 'special': 1.0, 'topic': 1.0, 'comput': 1.0, 'graphic': 1.0}
+
+{'i': 1.0, 'am': 1.0, 'interest': 1.0, 'in': 2.0, 'hidden-lin': 1.0, 'and': 2.0, 'hidden-surfac': 1.0, 'algorithm': 1.0, 'for': 1.0, 'cylind': 1.0, ',': 3.0, 'toroid': 1.0, 'sphere': 1.0, 'cone': 1.0, '.': 2.0, 'this': 1.0, 'is': 1.0, 'a': 1.0, 'rather': 1.0, 'special': 1.0, 'topic': 1.0, 'comput': 1.0, 'graphic': 1.0}
+
+{'i': 1.0, 'am': 1.0, 'interest': 1.0, 'in': 2.0, 'hidden-lin': 1.0, 'and': 2.0, 'hidden-surfac': 1.0, 'algorithm': 1.0, 'for': 1.0, 'cylind': 1.0, ',': 3.0, 'toroid': 1.0, 'sphere': 1.0, 'cone': 1.0, '.': 2.0, 'this': 1.0, 'is': 1.0, 'a': 1.0, 'rather': 1.0, 'special': 1.0, 'topic': 1.0, 'comput': 1.0, 'graphic': 1.0}
+
+{'i': 1.0, 'am': 1.0, 'interest': 1.0, 'in': 2.0, 'hidden-lin': 1.0, 'and': 2.0, 'hidden-surfac': 1.0, 'algorithm': 1.0, 'for': 1.0, 'cylind': 1.0, ',': 3.0, 'toroid': 1.0, 'sphere': 1.0, 'cone': 1.0, '.': 2.0, 'this': 1.0, 'is': 1.0, 'a': 1.0, 'rather': 1.0, 'special': 1.0, 'topic': 1.0, 'comput': 1.0, 'graphic': 1.0}
+
+{'i': 1.0, 'am': 1.0, 'interest': 1.0, 'in': 2.0, 'hidden-lin': 1.0, 'and': 2.0, 'hidden-surfac': 1.0, 'algorithm': 1.0, 'for': 1.0, 'cylind': 1.0, ',': 3.0, 'toroid': 1.0, 'sphere': 1.0, 'cone': 1.0, '.': 2.0, 'this': 1.0, 'is': 1.0, 'a': 1.0, 'rather': 1.0, 'special': 1.0, 'topic': 1.0, 'comput': 1.0, 'graphic': 1.0}
+
+{'i': 1.0, 'am': 1.0, 'interest': 1.0, 'in': 2.0, 'hidden-lin': 1.0, 'and': 2.0, 'hidden-surfac': 1.0, 'algorithm': 1.0, 'for': 1.0, 'cylind': 1.0, ',': 3.0, 'toroid': 1.0, 'sphere': 1.0, 'cone': 1.0, '.': 2.0, 'this': 1.0, 'is': 1.0, 'a': 1.0, 'rather': 1.0, 'special': 1.0, 'topic': 1.0, 'comput': 1.0, 'graphic': 1.0}
+
+{'i': 1.0, 'am': 1.0, 'interest': 1.0, 'in': 2.0, 'hidden-lin': 1.0, 'and': 2.0, 'hidden-surfac': 1.0, 'algorithm': 1.0, 'for': 1.0, 'cylind': 1.0, ',': 3.0, 'toroid': 1.0, 'sphere': 1.0, 'cone': 1.0, '.': 2.0, 'this': 1.0, 'is': 1.0, 'a': 1.0, 'rather': 1.0, 'special': 1.0, 'topic': 1.0, 'comput': 1.0, 'graphic': 1.0}
+
+{'i': 1.0, 'am': 1.0, 'interest': 1.0, 'in': 2.0, 'hidden-lin': 1.0, 'and': 2.0, 'hidden-surfac': 1.0, 'algorithm': 1.0, 'for': 1.0, 'cylind': 1.0, ',': 3.0, 'toroid': 1.0, 'sphere': 1.0, 'cone': 1.0, '.': 2.0, 'this': 1.0, 'is': 1.0, 'a': 1.0, 'rather': 1.0, 'special': 1.0, 'topic': 1.0, 'comput': 1.0, 'graphic': 1.0}
+
+{'i': 1.0, 'am': 1.0, 'interest': 1.0, 'in': 2.0, 'hidden-lin': 1.0, 'and': 2.0, 'hidden-surfac': 1.0, 'algorithm': 1.0, 'for': 1.0, 'cylind': 1.0, ',': 3.0, 'toroid': 1.0, 'sphere': 1.0, 'cone': 1.0, '.': 2.0, 'this': 1.0, 'is': 1.0, 'a': 1.0, 'rather': 1.0, 'special': 1.0, 'topic': 1.0, 'comput': 1.0, 'graphic': 1.0}
+
+{'i': 1.0, 'am': 1.0, 'interest': 1.0, 'in': 2.0, 'hidden-lin': 1.0, 'and': 2.0, 'hidden-surfac': 1.0, 'algorithm': 1.0, 'for': 1.0, 'cylind': 1.0, ',': 3.0, 'toroid': 1.0, 'sphere': 1.0, 'cone': 1.0, '.': 2.0, 'this': 1.0, 'is': 1.0, 'a': 1.0, 'rather': 1.0, 'special': 1.0, 'topic': 1.0, 'comput': 1.0, 'graphic': 1.0}
+
+
+
+    3. Top 20 documents most similiar to Documents 238, 1237, and 2740:
+
+    At Document ID of : 239
+Rank: 1 and Doc id: 239 and Title: ['inefficiency', 'of', 'the', 'use', 'of', 'boolean', 'functions', 'for', 'information', 'retrieval', 'systems'] and score of similarity: 1.0
+Rank: 2 and Doc id: 11 and Title: ['the', 'problem', 'of', 'programming', 'communication', 'with', 'changing', 'machines', 'a', 'proposed', 'solution-part', '2'] and score of similarity: 0.7065835796489938
+Rank: 3 and Doc id: 14 and Title: ['the', 'problem', 'of', 'programming', 'communication', 'with', 'changing', 'machines', 'a', 'proposed', 'solution', '(', 'part', '1', ')'] and score of similarity: 0.6966077814310226
+Rank: 4 and Doc id: 2631 and Title: ['an', 'information-theoretic', 'approach', 'to', 'text', 'searching', 'in', 'direct', 'access', 'systems'] and score of similarity: 0.6931948011461068
+Rank: 5 and Doc id: 51 and Title: ['on', 'the', 'construction', 'of', 'micro-flowcharts'] and score of similarity: 0.6753816335059705
+Rank: 6 and Doc id: 2632 and Title: ['hydra', ':', 'the', 'kernel', 'of', 'a', 'multiprocessor', 'operating', 'system'] and score of similarity: 0.6731713757960874
+Rank: 7 and Doc id: 1699 and Title: ['experimental', 'evaluation', 'of', 'information', 'retrieval', 'through', 'a', 'teletypewriter'] and score of similarity: 0.6690773945434181
+Rank: 8 and Doc id: 600 and Title: ['syntactical', 'charts', 'of', 'cobol', '61'] and score of similarity: 0.6541711367950579
+Rank: 9 and Doc id: 65 and Title: ['algol', 'sub-committee', 'report', '-', 'extensions'] and score of similarity: 0.651801556973329
+Rank: 10 and Doc id: 2824 and Title: ['an', 'improvement', 'to', 'martin', "'s", 'algorithm', 'for', 'computation', 'of', 'linear', 'precedence', 'functions'] and score of similarity: 0.6455760348467225
+Rank: 11 and Doc id: 291 and Title: ['use', 'of', 'mobol', 'in', 'preparingretrieval', 'programs'] and score of similarity: 0.6416236526819377
+Rank: 12 and Doc id: 633 and Title: ['simulation', 'and', 'analysis', 'of', 'biochemical', 'systems', '(', 'iii', '.', 'analysis', 'and', 'pattern', 'recognition', ')'] and score of similarity: 0.6408069008390093
+Rank: 13 and Doc id: 674 and Title: ['application', 'of', 'ibm', '1620', 'edp', 'methods', 'to', 'the', 'calculation', 'of', 'the', 'formation', 'constants', 'of', 'complex', 'irons'] and score of similarity: 0.6405126152203485
+Rank: 14 and Doc id: 763 and Title: ['a', 'syntax', 'controlled', 'generator', 'of', 'formal', 'language', 'processors'] and score of similarity: 0.6405126152203485
+Rank: 15 and Doc id: 1960 and Title: ['process', 'management', 'and', 'resource', 'sharing', 'in', 'the', 'multiaccess', 'system', 'esope'] and score of similarity: 0.6394460595374168
+Rank: 16 and Doc id: 2314 and Title: ['requirements', 'for', 'advanced', 'programming', 'systems', 'for', 'list', 'processing'] and score of similarity: 0.6350429613222793
+Rank: 17 and Doc id: 408 and Title: ['the', 'internal', 'organization', 'of', 'the', 'mad', 'translator'] and score of similarity: 0.6349021776571557
+Rank: 18 and Doc id: 1726 and Title: ['preliminary', 'investigation', 'of', 'techniques', 'for', 'automated', 'reading', 'of', 'unformatted', 'text'] and score of similarity: 0.6334786732709019
+Rank: 19 and Doc id: 2148 and Title: ['the', 'composition', 'of', 'semantics', 'in', 'algol', '68'] and score of similarity: 0.6292002442110673
+Rank: 20 and Doc id: 632 and Title: ['vectorcardiographic', 'diagnosis', 'with', 'the', 'aid', 'of', 'algol'] and score of similarity: 0.6225317562548818
+
+At Document ID of : 1236
+Rank: 1 and Doc id: 1236 and Title: ['the', 'smart', 'automatic', 'document', 'retrieval', 'system-an', 'illustration'] and score of similarity: 1.0
+Rank: 2 and Doc id: 1194 and Title: ['establishment', 'of', 'the', 'acm', 'repository', 'and', 'principles', 'of', 'the', 'ir', 'system', 'applied', 'to', 'its', 'operation'] and score of similarity: 0.7525987576877036
+Rank: 3 and Doc id: 2186 and Title: ['numerical', 'properties', 'of', 'the', 'ritz-trefftz', 'algorithm', 'for', 'optimal', 'control'] and score of similarity: 0.7519394791457563
+Rank: 4 and Doc id: 1307 and Title: ['a', 'lightpen-controlled', 'program', 'for', 'on-line', 'data', 'analysis'] and score of similarity: 0.7513116208886131
+Rank: 5 and Doc id: 972 and Title: ['an', 'executive', 'system', 'implemented', 'as', 'a', 'finite-state', 'automaton'] and score of similarity: 0.7470279310686511
+Rank: 6 and Doc id: 2622 and Title: ['a', 'user', 'authentication', 'scheme', 'not', 'requiring', 'secrecy', 'in', 'the', 'computer'] and score of similarity: 0.743915604364796
+Rank: 7 and Doc id: 670 and Title: ['some', 'legal', 'implications', 'of', 'the', 'use', 'of', 'computers', 'in', 'the', 'banking', 'business'] and score of similarity: 0.7395331341935554
+Rank: 8 and Doc id: 1534 and Title: ['dad', ',', 'the', 'c.s.i.r.o', '.', 'operating', 'system'] and score of similarity: 0.7362165780995278
+Rank: 9 and Doc id: 1108 and Title: ['digital', 'data', 'processor', 'for', 'tracking', 'the', 'partially', 'illuminated', 'moon', '*'] and score of similarity: 0.7271022985031568
+Rank: 10 and Doc id: 2195 and Title: ['on', 'the', 'optimal', 'detection', 'of', 'curves', 'in', 'noisy', 'pictures'] and score of similarity: 0.7266401859497089
+Rank: 11 and Doc id: 464 and Title: ['syntactic', 'analysis', 'by', 'digital', 'computer'] and score of similarity: 0.7255355687116136
+Rank: 12 and Doc id: 1410 and Title: ['interarrival', 'statistics', 'for', 'time', 'sharing', 'systems'] and score of similarity: 0.7234908772680759
+Rank: 13 and Doc id: 3013 and Title: ['some', 'new', 'methods', 'of', 'detecting', 'step', 'edges', 'in', 'digital', 'pictures'] and score of similarity: 0.7233055839778951
+Rank: 14 and Doc id: 2202 and Title: ['dynamic', 'microprogramming', ':', 'processor', 'organization', 'and', 'programming'] and score of similarity: 0.7225741914204074
+Rank: 15 and Doc id: 1572 and Title: ['the', 'simulation', 'of', 'time', 'sharing', 'systems'] and score of similarity: 0.7201130680230766
+Rank: 16 and Doc id: 2113 and Title: ['the', 'multistore', 'parser', 'for', 'hierarchical', 'syntactic', 'structures'] and score of similarity: 0.7184083231055297
+Rank: 17 and Doc id: 1665 and Title: ['automatic', 'generation', 'of', 'efficient', 'lexical', 'processors', 'using', 'finite', 'state', 'techniques'] and score of similarity: 0.71771264107143
+Rank: 18 and Doc id: 1671 and Title: ['a', 'phonological', 'rule', 'tester'] and score of similarity: 0.716514374604106
+Rank: 19 and Doc id: 1497 and Title: ['on', 'the', 'normalization', 'requirement', 'of', 'divisor', 'in', 'divide-', 'and-', 'correct', 'methods'] and score of similarity: 0.7154270597882567
+Rank: 20 and Doc id: 1014 and Title: ['machine', 'controls', 'for', 'analysis', 'of', 'variance'] and score of similarity: 0.7142402488185042
+
+At Document ID of : 2740
+Rank: 1 and Doc id: 2740 and Title: ['a', 'large', 'semaphore', 'based', 'operating', 'system'] and score of similarity: 1.0
+Rank: 2 and Doc id: 1749 and Title: ['the', 'structure', 'of', 'the', '``', 'the', "''", '-multiprogramming', 'system'] and score of similarity: 0.8462695688484715
+Rank: 3 and Doc id: 2379 and Title: ['the', 'design', 'of', 'the', 'venus', 'operating', 'system'] and score of similarity: 0.8301293507979491
+Rank: 4 and Doc id: 1747 and Title: ['three', 'criteria', 'for', 'designing', 'computing', 'systems', 'to', 'facilitate', 'debugging'] and score of similarity: 0.8277261800111616
+Rank: 5 and Doc id: 2357 and Title: ['mux', ',', 'a', 'simple', 'approach', 'to', 'on-line', 'computing'] and score of similarity: 0.8164448409134656
+Rank: 6 and Doc id: 2319 and Title: ['operating', 'system', 'performance'] and score of similarity: 0.8038223090756421
+Rank: 7 and Doc id: 1680 and Title: ['a', 'general-purpose', 'display', 'processing', 'and', 'tutorial', 'system'] and score of similarity: 0.8023935058392269
+Rank: 8 and Doc id: 1769 and Title: ['the', 'expanding', 'world', 'of', 'computers'] and score of similarity: 0.8006276081946415
+Rank: 9 and Doc id: 2920 and Title: ['game', 'interpretation', 'of', 'the', 'deadlock', 'avoidance', 'problem'] and score of similarity: 0.7984154229716183
+Rank: 10 and Doc id: 2991 and Title: ['improving', 'the', 'access', 'time', 'for', 'random', 'access', 'files'] and score of similarity: 0.7950706196862524
+Rank: 11 and Doc id: 3112 and Title: ['list', 'processing', 'in', 'real', 'time', 'on', 'a', 'serial', 'computer'] and score of similarity: 0.7950265213582361
+Rank: 12 and Doc id: 2002 and Title: ['amesplot-a', 'higher', 'level', 'data', 'plotting', 'software', 'system'] and score of similarity: 0.7939023191959353
+Rank: 13 and Doc id: 2313 and Title: ['the', 'evolution', 'of', 'storage', 'structures'] and score of similarity: 0.7865888460543785
+Rank: 14 and Doc id: 1705 and Title: ['a', 'set', 'of', 'basic', 'input-output', 'procedures', '(', 'algorithm', '335', '[', '15', ']', ')'] and score of similarity: 0.7816137373369337
+Rank: 15 and Doc id: 2632 and Title: ['hydra', ':', 'the', 'kernel', 'of', 'a', 'multiprocessor', 'operating', 'system'] and score of similarity: 0.7806546401061076
+Rank: 16 and Doc id: 3043 and Title: ['distributed', 'processes', ':', 'a', 'concurrent', 'programming', 'concept'] and score of similarity: 0.7795041530813416
+Rank: 17 and Doc id: 2059 and Title: ['a', 'language', 'for', 'treating', 'graphs'] and score of similarity: 0.7779854523599191
+Rank: 18 and Doc id: 1753 and Title: ['virtual', 'memory', ',', 'processes', ',', 'and', 'sharing', 'in', 'multics'] and score of similarity: 0.7776351132159242
+Rank: 19 and Doc id: 2967 and Title: ['a', 'comparison', 'of', 'hardware', 'and', 'software', 'associative', 'memories', 'in', 'the', 'context', 'of', 'computer', 'graphics'] and score of similarity: 0.7748848932178496
+Rank: 20 and Doc id: 2707 and Title: ['backtrack', 'programming', 'techniques'] and score of similarity: 0.7738411529274201
+
